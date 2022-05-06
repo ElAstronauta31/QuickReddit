@@ -1,4 +1,6 @@
 import React from "react";
+import { Header } from "./components/header/header";
+import { Subreddit } from "./components/body/subreddit/subreddit";
 
 function App() {
   return (
@@ -6,7 +8,8 @@ function App() {
       <Header/>
       <main>
         <Subreddit/>
-        <Posts/>
+        {/* 
+        <Posts/> */}
       </main>
     </div>
   );
