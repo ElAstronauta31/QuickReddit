@@ -40,5 +40,6 @@ const subredditSlice = createSlice({
     }
 })
 
+export const isLoading = (state) => state.subreddits.isLoading;
 export default subredditSlice.reducer;
 export const {changeActiveSub} = subredditSlice.actions;
