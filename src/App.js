@@ -10,7 +10,7 @@ function App() {
       <Header/>
       <MainWrapper>
           <Subreddit />
-          <Post/>
+          <Post/> 
       </MainWrapper>
     </Wrapper>
   );
