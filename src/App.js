@@ -1,14 +1,18 @@
 import React from "react";
+import { Header } from "./components/header/header";
+import { Subreddit } from "./components/body/subreddit/subreddit";
+import { Posts } from "./components/body/posts/posts";
+import {MainWrapper, Wrapper} from "./AppStyle"
 
 function App() {
   return (
-    <div className="App">
+    <Wrapper>
       <Header/>
-      <main>
-        <Subreddit/>
-        <Posts/>
-      </main>
-    </div>
+      <MainWrapper>
+          <Subreddit />
+          <Posts/> 
+      </MainWrapper>
+    </Wrapper>
   );
 }
 
