@@ -5,8 +5,9 @@ import { loadSubreddit } from "./postsSlice";
 import redditlogo from "../../../sitecontent/reddit-logo.png"
 import redditup from "../../../sitecontent/redditup.png"
 import comment from "../../../sitecontent/comment.png"
+import {Divider, H1, H2, Image, IndPara, IndPost, IndStat, Icon, Post, PostWrapper, PostHeader, StatImg, Stats, SubImage, H1long, ATag } from './PostsStyle';
 
-export const Post = () => {
+export const Posts = () => {
     const activeSub = useSelector(state => state.subreddits.activeSubreddit);
     const posts = useSelector(state => state.posts.posts);
     const subreddits = useSelector(state => state.subreddits.subreddits);
@@ -34,67 +35,70 @@ export const Post = () => {
 
 
     return(
-        <div>
-            <div>
+        <Post>
+            <PostHeader>
                 {
-                    filterToActive === undefined || filterToActive.header_img === null
-                    ? <img src={redditlogo}></img>
-                    : <img src={filterToActive.header_img}></img>
+                    filterToActive === undefined || filterToActive.header_img === null 
+                    ? <SubImage src={redditlogo}></SubImage>
+                    : <SubImage src={filterToActive.header_img}></SubImage> 
                 }
-                <h1>{activeSub}</h1>
-            </div>
-            {
-                searchTerm === ''
-                ? posts.map(post => (
-                    post.stickied ? null :
-                        <a>
-                            <div key={post.id}>
-                                <div>
-                                    <h2>{post.title}</h2>
-                                    <p>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? "..." : "")}</p>
-                                    {post.selftext.length > 600 ? <p>See full Post</p> : null }
-                                    <img src={post.url} onError={(e) => e.target.style.display = "none"}></img>
-                                </div>
-                                <div>
+                {
+                    activeSub.length > 21 
+                    ? <div><H1long>{activeSub}</H1long></div> 
+                    : <div><H1>{activeSub}</H1></div> 
+                }
+                
+            </PostHeader>
+            {searchTerm === '' 
+            ? posts.map(post => (
+                post.stickied ? null : 
+                    <ATag href={`https://www.reddit.com${post.permalink}`} target='_blank'>
+                        <PostWrapper key={post.id} >
+                            <IndPost>
+                                <H2>{post.title}</H2>
+                                <IndPara>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? "..." : "")}</IndPara>
+                                {post.selftext.length > 600 ? <p>See full Post</p> : null }
+                                <Image src={post.url} onError={(e) => e.target.style.display = "none"}/>
+                            </IndPost>
+                            <Stats>
+                                <IndStat>
+                                    {`u/${post.author}`}
+                                </IndStat>
+                                <Divider>
+                                    |
+                                </Divider>
+                                <IndStat>
                                     <div>
-                                        {`u/${post.author}`}
-                                    </div>
-                                    <div>
-                                        |
-                                    </div>
-                                    <div>
-                                        <div>
                                             {post.ups > 1000 ? shortenNum(post.ups) : post.ups}
-                                        </div>
-                                        <div>
-                                            <img src={redditup}></img>
-                                        </div>
                                     </div>
-                                    <div>
-                                        |
-                                    </div>
-                                    <div>
+                                    <Icon>
+                                            <StatImg src={redditup}></StatImg>
+                                    </Icon>
+                                </IndStat>
+                                <Divider>
+                                    |
+                                </Divider>
+                                <IndStat>
                                         <div>
                                             {post.num_comments}
-                                        </div>
-                                        <div>
-                                            <img src={comment}></img>
-                                        </div>
                                     </div>
-
-                                </div>
-                            </div>
-                        </a>
-                ))
-                : filteredPost.map(post => (
-                    post.stickied ? null : 
-                    <div key={post.id}>
-                        <h2>{post.title}</h2>
-                        <p>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? "..." : "")}</p>
-                        {post.selftext.length > 600 ? <p>See full Post</p> : null }
-                        <img src={post.url} onError={(e) => e.target.style.display = "none"}/>
-                    </div> ))
-            }
-        </div>
+                                    <Icon>
+                                            <StatImg src={comment}></StatImg>
+                                    </Icon>
+                                </IndStat>
+                            </Stats>
+                        </PostWrapper>
+                    </ATag>
+                 ))
+            : filteredPost.map(post => (
+                post.stickied ? null : 
+                <div key={post.id}>
+                    <h2>{post.title}</h2>
+                    <p>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? "..." : "")}</p>
+                    {post.selftext.length > 600 ? <p>See full Post</p> : null }
+                    <img src={post.url} onError={(e) => e.target.style.display = "none"}/>
+                </div> ))
+        }
+        </Post>
     )
 }
