@@ -27,8 +27,8 @@ export const Subreddit = () => {
                     <SubButton key={item.display_name_prefixed} onClick={() => dispatch(changeActiveSub(item.display_name_prefixed))}>
                         <SubList key={item.id}>
                             {
-                                item.header_img !== null ? <SubImage src={item.header_img}></SubImage> 
-                                : <SubImage src={redditlogo}></SubImage>
+                                item.header_img !== null ? <SubImage src={item.header_img} alt="subreddit header image"></SubImage> 
+                                : <SubImage src={redditlogo} alt="reddit logo"></SubImage>
                             }
                             
                             <SubName>{item.display_name_prefixed}</SubName> 

@@ -39,8 +39,8 @@ export const Posts = () => {
             <PostHeader>
                 {
                     filterToActive === undefined || filterToActive.header_img === null 
-                    ? <SubImage src={redditlogo}></SubImage>
-                    : <SubImage src={filterToActive.header_img}></SubImage> 
+                    ? <SubImage src={redditlogo} alt="reddit logo"></SubImage>
+                    : <SubImage src={filterToActive.header_img} alt="active subreddit header image"></SubImage> 
                 }
                 {
                     activeSub.length > 21 
@@ -58,7 +58,7 @@ export const Posts = () => {
                                 <H2>{post.title}</H2>
                                 <IndPara>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? "..." : "")}</IndPara>
                                 {post.selftext.length > 600 ? <p>See full Post</p> : null }
-                                <Image src={post.url} onError={(e) => e.target.style.display = "none"}/>
+                                <Image src={post.url} alt="image posted by reddit user" onError={(e) => e.target.style.display = "none"}/>
                             </IndPost>
                             <Stats>
                                 <IndStat>
@@ -72,7 +72,7 @@ export const Posts = () => {
                                             {post.ups > 1000 ? shortenNum(post.ups) : post.ups}
                                     </div>
                                     <Icon>
-                                            <StatImg src={redditup}></StatImg>
+                                            <StatImg src={redditup} alt="up arrow"></StatImg>
                                     </Icon>
                                 </IndStat>
                                 <Divider>
@@ -83,7 +83,7 @@ export const Posts = () => {
                                             {post.num_comments}
                                     </div>
                                     <Icon>
-                                            <StatImg src={comment}></StatImg>
+                                            <StatImg src={comment} alt="comment icon"></StatImg>
                                     </Icon>
                                 </IndStat>
                             </Stats>

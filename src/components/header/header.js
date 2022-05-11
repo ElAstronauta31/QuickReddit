@@ -9,7 +9,7 @@ export const Header = () => {
     const dispatch = useDispatch();
     return(
         <HeaderWrapper>
-            <SubImage src={redditlogo}></SubImage>
+            <SubImage src={redditlogo} alt="reddit logo"></SubImage>
             <Button onClick={() => dispatch(changeActiveSub('r/meme')) }>
                 QuickReddit
             </Button>
