@@ -1,17 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux"; 
 import redditlogo from '../../sitecontent/reddit-logo.png';
+import { Button, HeaderWrapper, SubImage } from './HeaderStyle';
+import { changeActiveSub } from '../body/subreddit/subredditSlice'
 import { Search } from "./search/search";
 
 export const Header = () => {
     const dispatch = useDispatch();
     return(
-        <div>
-            <img src={redditlogo}></img>
-            <button>
+        <HeaderWrapper>
+            <SubImage src={redditlogo}></SubImage>
+            <Button onClick={() => dispatch(changeActiveSub('r/meme')) }>
                 QuickReddit
-            </button>
+            </Button>
+
             <Search />
-        </div>
+            
+        </HeaderWrapper>
     )
 }
