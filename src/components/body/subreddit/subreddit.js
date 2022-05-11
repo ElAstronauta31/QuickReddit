@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {changeActiveSub, isLoading, loadSubredditNames} from "./subredditSlice";
+import { SubButton, SubList, SubTitle, SubredditWrapper, UnorderList, SubImage, SubName, DropDown } from "./SubredditStyle";
 import redditlogo from '../../../sitecontent/reddit-logo.png';
 
 export const Subreddit = () => {
@@ -17,24 +18,29 @@ export const Subreddit = () => {
     }
 
     return (
-        <div>
-            <h1>Top Subreddits</h1>
-            <ul>
-                {
-                    subreddits.map((item) => (
-                        <button key={item.display_name_prefixed} onClick={() => dispatch(changeActiveSub(item.display_name_prefixed))}>
-                            <li key= {item.id}>
-                                {
-                                    item.header_img !== null ? <img src={item.header_img}></img>
-                                    : <img src={redditlogo}></img>
-                                }
-                                <h2>{item.display_name_prefixed}</h2>
-                            </li>
-                        </button>
-                    ))
-                }
-            </ul>
-
-        </div>
+        <SubredditWrapper>
+            <SubTitle>
+                Top Subreddits
+            </SubTitle>
+            <UnorderList>
+                {subreddits.map((item) => (
+                    <SubButton key={item.display_name_prefixed} onClick={() => dispatch(changeActiveSub(item.display_name_prefixed))}>
+                        <SubList key={item.id}>
+                            {
+                                item.header_img !== null ? <SubImage src={item.header_img}></SubImage> 
+                                : <SubImage src={redditlogo}></SubImage>
+                            }
+                            
+                            <SubName>{item.display_name_prefixed}</SubName> 
+                        </SubList>
+                    </SubButton>
+                ))}
+            </UnorderList>
+            <DropDown>
+                {subreddits.map((item) => (
+                    <option key={item.id} onClick={() => dispatch(changeActiveSub(item.display_name_prefixed))}>{item.display_name_prefixed}</option>
+                ))}
+            </DropDown>
+        </SubredditWrapper>
     )
 }
