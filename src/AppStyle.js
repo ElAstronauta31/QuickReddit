@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 export const MainWrapper = styled.main`
     display: flex;
     @media (max-width: 850px) {
-        padding-left: 35px;
+        padding-left: 20px;
         flex-direction: column;
       }
 `;

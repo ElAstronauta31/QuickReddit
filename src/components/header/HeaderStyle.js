@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.div`
     height: 75px;
     position: absolute;
     width: 100%;
+    justify-content: space-between;
 `;
 
 export const Button = styled.button`

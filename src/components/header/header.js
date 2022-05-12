@@ -24,9 +24,7 @@ export const Header = () => {
             <Button onClick={onClick}>
                 QuickReddit
             </Button>
-
-            <Search />
-            
+                <Search />
         </HeaderWrapper>
     )
 }
