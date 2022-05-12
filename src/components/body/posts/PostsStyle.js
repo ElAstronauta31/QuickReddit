@@ -104,11 +104,11 @@ export const IndStat = styled.div`
   margin: 5px 10px;
   min-width: 50px;
   text-align: left;
-  font-size: 18px;
+  font-size: 14px;
   display: flex;
   justify-content: space-around;
   @media (max-width: 850px) {
-   font-size: 12px;
+   font-size: 10px;
    padding: 0 5px;
   }
 `;
