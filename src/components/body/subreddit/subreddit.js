@@ -47,7 +47,8 @@ export const Subreddit = () => {
                     </SubButton>
                 ))}
             </UnorderList>
-            <DropDown id="selectBox" onChange={() => dispatch(changeActiveSub(selector()))}>
+            <DropDown id="selectBox" onChange={() => dispatch(changeActiveSub(selector()))} >
+                <option disabled selected value="blank">Select Subreddit</option>
                 {subreddits.map((item) => (
                     <option value={item.display_name_prefixed} key={item.id} >{item.display_name_prefixed}</option>
                 ))}

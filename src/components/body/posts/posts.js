@@ -44,8 +44,8 @@ export const Posts = () => {
                 }
                 {
                     activeSub.length > 21 
-                    ? <div><H1long>{activeSub}</H1long></div> 
-                    : <div><H1>{activeSub}</H1></div> 
+                    ? <div><H1long id="postTitle">{activeSub}</H1long></div> 
+                    : <div><H1 id="postTitle">{activeSub}</H1></div> 
                 }
                 
             </PostHeader>
