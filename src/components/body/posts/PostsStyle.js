@@ -139,8 +139,8 @@ export const PostHeader = styled.div`
 `;
 
 export const SubImage = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     border: 2px solid #ff4301;
     @media (max-width: 850px) {

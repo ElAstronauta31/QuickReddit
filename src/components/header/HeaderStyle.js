@@ -9,6 +9,7 @@ export const HeaderWrapper = styled.div`
     position: absolute;
     width: 100%;
     justify-content: space-between;
+    border-bottom: 1px solid #ff4301;
 `;
 
 export const Button = styled.button`
