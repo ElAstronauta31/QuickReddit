@@ -8,10 +8,21 @@ export const Subreddit = () => {
     const subreddits = useSelector(state => state.subreddits.subreddits);
     const isLoadingSub = useSelector(isLoading);
     const dispatch = useDispatch();
+    
+    
+    const selector = () => {
+        let select = document.getElementById("selectBox");
+        let selectValue = select.value;
+        return selectValue
+    }
+    
 
     useEffect(() => {
         dispatch(loadSubredditNames())
     }, [dispatch])
+
+
+
 
     if (isLoadingSub) {
         return <div>LOADING</div>
@@ -36,9 +47,9 @@ export const Subreddit = () => {
                     </SubButton>
                 ))}
             </UnorderList>
-            <DropDown>
+            <DropDown id="selectBox" onChange={() => dispatch(changeActiveSub(selector()))}>
                 {subreddits.map((item) => (
-                    <option key={item.id} onClick={() => dispatch(changeActiveSub(item.display_name_prefixed))}>{item.display_name_prefixed}</option>
+                    <option value={item.display_name_prefixed} key={item.id} >{item.display_name_prefixed}</option>
                 ))}
             </DropDown>
         </SubredditWrapper>
