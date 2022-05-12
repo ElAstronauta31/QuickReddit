@@ -64,7 +64,7 @@ export const H1 = styled.h1`
     }
 `;
 export const H1long = styled.h1`
-    font-size: 24px;
+    font-size: 18px;
     padding-left: 15px;
     padding-top: 20px;
     color: #f9f6ee;
@@ -144,8 +144,8 @@ export const SubImage = styled.img`
     border-radius: 50%;
     border: 2px solid #ff4301;
     @media (max-width: 850px) {
-      width: 75px;
-      height: 75px;
+      width: 60px;
+      height: 60px;
     }
 `;
 

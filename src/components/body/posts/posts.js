@@ -43,7 +43,7 @@ export const Posts = () => {
                     : <SubImage src={filterToActive.header_img} alt="active subreddit header image"></SubImage> 
                 }
                 {
-                    activeSub.length > 21 
+                    activeSub.length > 19 
                     ? <div><H1long id="postTitle">{activeSub}</H1long></div> 
                     : <div><H1 id="postTitle">{activeSub}</H1></div> 
                 }
