@@ -5,7 +5,7 @@ import { loadSubreddit } from "./postsSlice";
 import redditlogo from "../../../sitecontent/reddit-logo.png"
 import redditup from "../../../sitecontent/redditup.png"
 import comment from "../../../sitecontent/comment.png"
-import {Divider, H1, H2, Image, IndPara, IndPost, IndStat, Icon, Post, PostWrapper, PostHeader, StatImg, Stats, SubImage, H1long, ATag } from './PostsStyle';
+import {Divider,NoResultDiv, H1, H2, Image, IndPara, IndPost, IndStat, Icon, Post, PostWrapper, PostHeader, StatImg, Stats, SubImage, H1long, ATag } from './PostsStyle';
 
 export const Posts = () => {
     const activeSub = useSelector(state => state.subreddits.activeSubreddit);
@@ -90,46 +90,50 @@ export const Posts = () => {
                         </PostWrapper>
                     </ATag>
                  ))
-            : filteredPost.map(post => (
-                post.stickied ? null : 
-                    <ATag href={`https://www.reddit.com${post.permalink}`} target='_blank'>
-                        <PostWrapper key={post.id} >
-                            <IndPost>
-                                <H2>{post.title}</H2>
-                                <IndPara>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? "..." : "")}</IndPara>
-                                {post.selftext.length > 600 ? <p>See full Post</p> : null }
-                                <Image src={post.url} alt="image posted by reddit user" onError={(e) => e.target.style.display = "none"}/>
-                            </IndPost>
-                            <Stats>
-                                <IndStat>
-                                    {`u/${post.author}`}
-                                </IndStat>
-                                <Divider>
-                                    |
-                                </Divider>
-                                <IndStat>
-                                    <div>
-                                            {post.ups > 1000 ? shortenNum(post.ups) : post.ups}
-                                    </div>
-                                    <Icon>
-                                            <StatImg src={redditup} alt="up arrow"></StatImg>
-                                    </Icon>
-                                </IndStat>
-                                <Divider>
-                                    |
-                                </Divider>
-                                <IndStat>
+            : filteredPost.length !== 0 
+                ? filteredPost.map(post => (
+                    post.stickied ? null : 
+                        <ATag href={`https://www.reddit.com${post.permalink}`} target='_blank'>
+                            <PostWrapper key={post.id} >
+                                <IndPost>
+                                    <H2>{post.title}</H2>
+                                    <IndPara>{post.selftext.substring(0, 600) + (post.selftext.length > 600 ? "..." : "")}</IndPara>
+                                    {post.selftext.length > 600 ? <p>See full Post</p> : null }
+                                    <Image src={post.url} alt="image posted by reddit user" onError={(e) => e.target.style.display = "none"}/>
+                                </IndPost>
+                                <Stats>
+                                    <IndStat>
+                                        {`u/${post.author}`}
+                                    </IndStat>
+                                    <Divider>
+                                        |
+                                    </Divider>
+                                    <IndStat>
                                         <div>
-                                            {post.num_comments}
-                                    </div>
-                                    <Icon>
-                                            <StatImg src={comment} alt="comment icon"></StatImg>
-                                    </Icon>
-                                </IndStat>
-                            </Stats>
-                        </PostWrapper>
-                    </ATag>
-                 ))
+                                                {post.ups > 1000 ? shortenNum(post.ups) : post.ups}
+                                        </div>
+                                        <Icon>
+                                                <StatImg src={redditup} alt="up arrow"></StatImg>
+                                        </Icon>
+                                    </IndStat>
+                                    <Divider>
+                                        |
+                                    </Divider>
+                                    <IndStat>
+                                            <div>
+                                                {post.num_comments}
+                                        </div>
+                                        <Icon>
+                                                <StatImg src={comment} alt="comment icon"></StatImg>
+                                        </Icon>
+                                    </IndStat>
+                                </Stats>
+                            </PostWrapper>
+                        </ATag>
+                    ))
+                : <NoResultDiv>
+                    No Search Results
+                  </NoResultDiv>
         }
         </Post>
     )

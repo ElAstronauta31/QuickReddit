@@ -19,6 +19,19 @@ export const PostWrapper = styled.div`
     }
 `;
 
+export const NoResultDiv = styled.div`
+    margin: 150px auto;
+    width: 35%;
+    height: 500px;
+    color: #f9f6ee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (max-width: 850px) {
+      margin: 100px auto 50px auto;
+    }
+`;
+
 export const Post = styled.div`
     width:55%;
     @media (max-width: 850px) {
