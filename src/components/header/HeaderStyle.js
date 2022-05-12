@@ -23,7 +23,7 @@ export const Button = styled.button`
     color: #ff4301;
   }
   @media (max-width: 850px) {
-    font-size: 24px;
+    font-size: 18px;
   }
 `;
 
