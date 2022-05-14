@@ -16,9 +16,7 @@ These are the initial wireframes for a 1080p web broswer and smaller screen web 
 
 ### Smaller Screen Web Browser
 
-![Small Screen wireframe](/wireframe/SmallScreen.png)
-
-![Small Screen drop down wireframe](/wireframe/SmallScreenDropDown.png)
+![Small Screen wireframe](/wireframe/SmallScreenFull.PNG)
 
 ## Dependencies
 
