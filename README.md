@@ -29,3 +29,7 @@ These are the initial wireframes for a 1080p web broswer and smaller screen web 
 * Select subreddit to view from top 25 subreddits
 * Search through posts in subreddit
 * Click on post will send you to the post on the Reddit website
+
+## Author
+
+Rony Colón
